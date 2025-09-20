@@ -16,3 +16,4 @@ const PostCard: React.FC<PostProps> = ({ title, body, userId, id }) => {
 };
 
 export default PostCard;
+
