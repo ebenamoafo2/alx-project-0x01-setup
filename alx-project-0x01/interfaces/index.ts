@@ -14,10 +14,11 @@ export interface UserProps {
     phone:    string;
     website:  string;
     company:  Company;
+    street:  string;
 }
 
 export interface Address {
-    street:  string;
+   
     suite:   string;
     city:    string;
     zipcode: string;
