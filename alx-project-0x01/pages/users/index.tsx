@@ -4,8 +4,8 @@ import UserCard from '../../components/common/UserCard';
 import { UserProps } from '../../interfaces';
 
 const Users: React.FC = () => {
-  // Sample users data matching UserProps interface
-  const users: UserProps[] = [
+  // Sample posts data matching UserProps interface
+  const posts: UserProps[] = [
     {
       id: 1,
       name: "Leanne Graham",
@@ -84,7 +84,7 @@ const Users: React.FC = () => {
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <h1 className="text-3xl font-bold text-gray-900 mb-8">Users</h1>
           <div>
-            {users.map((user) => (
+            {posts.map((user) => (
               <UserCard key={user.id} {...user} />
             ))}
           </div>
@@ -94,6 +94,7 @@ const Users: React.FC = () => {
     </div>
   );
 };
+
 export async function getStaticProps() {
   const response = await fetch("https://jsonplaceholder.typicode.com/users")
   const posts = await response.json()
@@ -104,6 +105,5 @@ export async function getStaticProps() {
     }
   }
 }
-
 
 export default Users;
