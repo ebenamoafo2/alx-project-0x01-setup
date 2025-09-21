@@ -61,8 +61,8 @@ export interface UserData {
   company: Company;
 }
 
-// UserModalProps interface for modal components
+// UserModalProps interface for modal component
 export interface UserModalProps {
   onClose: () => void;
-  onSubmit: (user: UserData) => void;
+  onSubmit: (post: UserProps) => void;  
 }
