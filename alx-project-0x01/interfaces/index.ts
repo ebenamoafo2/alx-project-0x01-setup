@@ -47,3 +47,26 @@ export interface PostModalProps {
   onClose: () => void;
   onSubmit: (post: PostData) => void;
 }
+
+
+// UserData interface (same structure as UserProps)
+export interface UserData {
+  id: number;
+  name: string;
+  username: string;
+  email: string;
+  address: Address;
+  phone: string;
+  website: string;
+  company: Company;
+}
+
+// UserModalProps interface for modal components
+export interface UserModalProps {
+  isOpen: boolean;
+  onClose: () => void;
+  user?: UserData;
+  onSave?: (user: UserData) => void;
+  onDelete?: (userId: number) => void;
+  mode?: 'view' | 'edit' | 'create';
+}

@@ -1,9 +1,13 @@
+import React, { useState } from 'react';
 import Header from '../../components/layout/Header';
 import Footer from '../../components/layout/Footer';
 import UserCard from '../../components/common/UserCard';
-import { UserProps } from '../../interfaces';
+import UserModal from '../../components/common/UserModal';
+import { UserProps, UserData } from '../../interfaces';
 
 const Users: React.FC = () => {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  
   // Sample posts data matching UserProps interface
   const posts: UserProps[] = [
     {
@@ -77,12 +81,29 @@ const Users: React.FC = () => {
     }
   ];
 
+  const handleAddUser = (newUser: UserData) => {
+    console.log('Adding new user:', newUser);
+    // Here you would typically add the user to your state or make an API call
+  };
+
+  const handleCloseModal = () => {
+    setIsModalOpen(false);
+  };
+
   return (
     <div className="min-h-screen flex flex-col">
       <Header />
       <main className="flex-grow bg-gray-50 py-8">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h1 className="text-3xl font-bold text-gray-900 mb-8">Users</h1>
+          <div className="flex justify-between items-center mb-8">
+            <h1 className="text-3xl font-bold text-gray-900">Users</h1>
+            <button
+              onClick={() => setIsModalOpen(true)}
+              className="px-6 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition"
+            >
+              Add User
+            </button>
+          </div>
           <div>
             {posts.map((user) => (
               <UserCard key={user.id} {...user} />
@@ -91,6 +112,13 @@ const Users: React.FC = () => {
         </div>
       </main>
       <Footer />
+      
+      {isModalOpen && (
+        <UserModal 
+          onClose={handleCloseModal}
+          onSubmit={handleAddUser}
+        />
+      )}
     </div>
   );
 };
